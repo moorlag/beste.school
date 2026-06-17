@@ -11,10 +11,29 @@ from pathlib import Path
 
 import pandas as pd
 
-from .config import laad_config
+from .config import Config, laad_config
 from .indicators import bouw_indicatortabel, filter_drempel
 from .ingest import laad_bronnen
 from .score import bereken_scores, maak_ranglijst
+
+_BASIS_KOLOMMEN = [
+    "rang",
+    "instellingsnaam",
+    "gemeente",
+    "provincie",
+    "gem_ce_cijfer",
+    "slaagpercentage",
+    "score",
+]
+_GECORRIGEERD_KOLOMMEN = [
+    "rang",
+    "instellingsnaam",
+    "gemeente",
+    "ses_score",
+    "score",
+    "score_gecorrigeerd",
+    "toegevoegde_waarde",
+]
 
 
 def _toon(df: pd.DataFrame, kolommen: list[str], titel: str, top: int) -> None:
@@ -27,6 +46,42 @@ def _toon(df: pd.DataFrame, kolommen: list[str], titel: str, top: int) -> None:
     print(weergave.to_string(index=False))
 
 
+def _toon_totaal(gescoord: pd.DataFrame, config: Config, top: int) -> pd.DataFrame:
+    """Eén ranglijst over alle scholen (geaggregeerd over onderwijstypen)."""
+    ruw = maak_ranglijst(gescoord, op="score")
+    _toon(ruw, _BASIS_KOLOMMEN, f"Top {top} -- ruwe score", top)
+
+    if config.ses_correctie_actief and "score_gecorrigeerd" in gescoord.columns:
+        gecorrigeerd = maak_ranglijst(gescoord, op="score_gecorrigeerd")
+        _toon(
+            gecorrigeerd,
+            _GECORRIGEERD_KOLOMMEN,
+            f"Top {top} -- gecorrigeerd voor leerlingpopulatie (toegevoegde waarde)",
+            top,
+        )
+        return gecorrigeerd
+    return ruw
+
+
+def _toon_per_onderwijstype(
+    gescoord: pd.DataFrame, config: Config, top: int
+) -> pd.DataFrame:
+    """Aparte ranglijst per onderwijstype; scholen alleen met hun gelijken vergeleken."""
+    op = (
+        "score_gecorrigeerd"
+        if config.ses_correctie_actief and "score_gecorrigeerd" in gescoord.columns
+        else "score"
+    )
+    kolommen = _GECORRIGEERD_KOLOMMEN if op == "score_gecorrigeerd" else _BASIS_KOLOMMEN
+
+    delen = []
+    for onderwijstype, deel in gescoord.groupby("onderwijstype", sort=True):
+        ranglijst = maak_ranglijst(deel, op=op)
+        _toon(ranglijst, kolommen, f"Top {top} -- {onderwijstype}", top)
+        delen.append(ranglijst)
+    return pd.concat(delen, ignore_index=True)
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="beste_school",
@@ -35,6 +90,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--data", default="data/raw", help="Map met bronbestanden.")
     parser.add_argument("--config", default="config.yaml", help="Configuratiebestand.")
     parser.add_argument("--top", type=int, default=15, help="Aantal scholen in de top.")
+    parser.add_argument(
+        "--per-onderwijstype",
+        action="store_true",
+        help="Rangschik binnen elk onderwijstype (vmbo-t/havo/vwo) apart.",
+    )
     parser.add_argument(
         "--output",
         default="output/ranglijst.csv",
@@ -45,37 +105,18 @@ def main(argv: list[str] | None = None) -> int:
     config = laad_config(args.config)
     bronnen = laad_bronnen(args.data)
 
-    indicatoren = bouw_indicatortabel(bronnen)
+    indicatoren = bouw_indicatortabel(bronnen, per_onderwijstype=args.per_onderwijstype)
     indicatoren = filter_drempel(indicatoren, config.drempel_kandidaten)
-    gescoord = bereken_scores(indicatoren, config)
 
-    print(f"\nScholen na drempel ({config.drempel_kandidaten} kandidaten): {len(gescoord)}")
+    groep_kolom = "onderwijstype" if args.per_onderwijstype else None
+    gescoord = bereken_scores(indicatoren, config, groep_kolom=groep_kolom)
 
-    basis_kolommen = [
-        "rang",
-        "instellingsnaam",
-        "gemeente",
-        "provincie",
-        "gem_ce_cijfer",
-        "slaagpercentage",
-        "score",
-    ]
+    print(f"\nRijen na drempel ({config.drempel_kandidaten} kandidaten): {len(gescoord)}")
 
-    ruw = maak_ranglijst(gescoord, op="score")
-    _toon(ruw, basis_kolommen, f"Top {args.top} -- ruwe score", args.top)
-
-    if config.ses_correctie_actief and "score_gecorrigeerd" in gescoord.columns:
-        gecorrigeerd = maak_ranglijst(gescoord, op="score_gecorrigeerd")
-        _toon(
-            gecorrigeerd,
-            ["rang", "instellingsnaam", "gemeente", "ses_score",
-             "score", "score_gecorrigeerd", "toegevoegde_waarde"],
-            f"Top {args.top} -- gecorrigeerd voor leerlingpopulatie (toegevoegde waarde)",
-            args.top,
-        )
-        volledig = gecorrigeerd
+    if args.per_onderwijstype:
+        volledig = _toon_per_onderwijstype(gescoord, config, args.top)
     else:
-        volledig = ruw
+        volledig = _toon_totaal(gescoord, config, args.top)
 
     uitvoer = Path(args.output)
     uitvoer.parent.mkdir(parents=True, exist_ok=True)

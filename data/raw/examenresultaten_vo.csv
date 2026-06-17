@@ -1,143 +1,154 @@
 BRIN_NUMMER;VESTIGINGSNUMMER;INSTELLINGSNAAM;GEMEENTE;PROVINCIE;ONDERWIJSTYPE;EXAMENKANDIDATEN;GESLAAGDEN;GEM_CE_CIJFER
-11UR;02;De Horizon Lyceum (Amsterdam);Amsterdam;Noord-Holland;HAVO;94;90;6,89
-11UR;02;De Horizon Lyceum (Amsterdam);Amsterdam;Noord-Holland;VWO;120;115;7,00
-19FC;02;Stedelijk College (Rotterdam);Rotterdam;Zuid-Holland;VMBO-GT;83;77;6,52
-19FC;02;Stedelijk College (Rotterdam);Rotterdam;Zuid-Holland;HAVO;75;69;6,56
-28TJ;04;Het Nieuwe Gymnasium (Den Haag);Den Haag;Zuid-Holland;VMBO-GT;129;109;6,15
-28TJ;04;Het Nieuwe Gymnasium (Den Haag);Den Haag;Zuid-Holland;HAVO;112;96;6,24
-28TJ;04;Het Nieuwe Gymnasium (Den Haag);Den Haag;Zuid-Holland;VWO;98;84;6,18
-26FU;00;Rijnvliet Scholengemeenschap (Utrecht);Utrecht;Utrecht;VMBO-GT;78;72;6,69
-27OC;03;De Meander Mavo/Havo/Vwo (Eindhoven);Eindhoven;Noord-Brabant;VMBO-GT;117;108;6,67
-27OC;03;De Meander Mavo/Havo/Vwo (Eindhoven);Eindhoven;Noord-Brabant;HAVO;83;76;6,58
-18RD;02;Noorderlicht Lyceum (Groningen);Groningen;Groningen;VMBO-GT;105;97;6,65
-18RD;02;Noorderlicht Lyceum (Groningen);Groningen;Groningen;VWO;107;99;6,67
-19LE;01;Het Vrije College (Tilburg);Tilburg;Noord-Brabant;VMBO-GT;39;34;6,27
-19LE;01;Het Vrije College (Tilburg);Tilburg;Noord-Brabant;HAVO;58;52;6,36
-19LE;01;Het Vrije College (Tilburg);Tilburg;Noord-Brabant;VWO;115;102;6,31
-12LS;01;Parklaan Gymnasium (Almere);Almere;Flevoland;VMBO-GT;39;36;6,66
-12LS;01;Parklaan Gymnasium (Almere);Almere;Flevoland;HAVO;90;83;6,81
-13ME;01;De Brug Scholengemeenschap (Nijmegen);Nijmegen;Gelderland;VMBO-GT;67;65;6,91
-13ME;01;De Brug Scholengemeenschap (Nijmegen);Nijmegen;Gelderland;HAVO;112;107;6,98
-13ME;01;De Brug Scholengemeenschap (Nijmegen);Nijmegen;Gelderland;VWO;100;99;7,09
-13OO;02;Lindehof Mavo/Havo/Vwo (Enschede);Enschede;Overijssel;VMBO-GT;68;60;6,29
-13OO;02;Lindehof Mavo/Havo/Vwo (Enschede);Enschede;Overijssel;HAVO;84;72;6,20
-13OO;02;Lindehof Mavo/Havo/Vwo (Enschede);Enschede;Overijssel;VWO;88;77;6,48
-29FG;00;Het Baken Lyceum (Haarlem);Haarlem;Noord-Holland;VMBO-GT;119;116;6,92
-29FG;00;Het Baken Lyceum (Haarlem);Haarlem;Noord-Holland;HAVO;84;81;7,00
-29FG;00;Het Baken Lyceum (Haarlem);Haarlem;Noord-Holland;VWO;74;71;6,89
-26XF;04;Oostvaarders College (Arnhem);Arnhem;Gelderland;VMBO-GT;75;72;7,05
-26XF;04;Oostvaarders College (Arnhem);Arnhem;Gelderland;HAVO;96;91;6,82
-24EJ;02;De Dijk Gymnasium (Zwolle);Zwolle;Overijssel;VMBO-GT;76;64;6,03
-24EJ;02;De Dijk Gymnasium (Zwolle);Zwolle;Overijssel;VWO;93;76;6,10
-25PK;00;Vondel Scholengemeenschap (Leeuwarden);Leeuwarden;Friesland;VMBO-GT;91;84;6,67
-25PK;00;Vondel Scholengemeenschap (Leeuwarden);Leeuwarden;Friesland;HAVO;108;100;6,85
-25PK;00;Vondel Scholengemeenschap (Leeuwarden);Leeuwarden;Friesland;VWO;82;76;6,74
-24KA;04;Erasmus-fictief Mavo/Havo/Vwo (Maastricht);Maastricht;Limburg;VMBO-GT;38;35;6,52
-24KA;04;Erasmus-fictief Mavo/Havo/Vwo (Maastricht);Maastricht;Limburg;VWO;67;61;6,37
-12JY;02;Het Anker Lyceum (Middelburg);Middelburg;Zeeland;VMBO-GT;164;134;5,83
-12JY;02;Het Anker Lyceum (Middelburg);Middelburg;Zeeland;HAVO;191;157;5,84
-28DX;04;De Waal College (Assen);Assen;Drenthe;VMBO-GT;41;37;6,44
-28DX;04;De Waal College (Assen);Assen;Drenthe;HAVO;70;63;6,51
-28DX;04;De Waal College (Assen);Assen;Drenthe;VWO;102;91;6,47
-19EX;01;Spinoza-fictief Gymnasium (Lelystad);Lelystad;Flevoland;VMBO-GT;63;63;7,24
-19EX;01;Spinoza-fictief Gymnasium (Lelystad);Lelystad;Flevoland;VWO;28;28;7,44
-21UQ;03;De Vlieger Scholengemeenschap (Amsterdam);Amsterdam;Noord-Holland;VMBO-GT;95;82;6,56
-21UQ;03;De Vlieger Scholengemeenschap (Amsterdam);Amsterdam;Noord-Holland;HAVO;96;85;6,45
-21UQ;03;De Vlieger Scholengemeenschap (Amsterdam);Amsterdam;Noord-Holland;VWO;101;88;6,59
-18JE;03;Het Kompas Mavo/Havo/Vwo (Rotterdam);Rotterdam;Zuid-Holland;VMBO-GT;150;142;6,95
-18JE;03;Het Kompas Mavo/Havo/Vwo (Rotterdam);Rotterdam;Zuid-Holland;HAVO;105;99;6,91
-18JE;03;Het Kompas Mavo/Havo/Vwo (Rotterdam);Rotterdam;Zuid-Holland;VWO;65;61;6,93
-29PQ;00;De Horizon Lyceum (Den Haag);Den Haag;Zuid-Holland;VMBO-GT;87;84;6,93
-29PQ;00;De Horizon Lyceum (Den Haag);Den Haag;Zuid-Holland;HAVO;112;108;6,98
-29PQ;00;De Horizon Lyceum (Den Haag);Den Haag;Zuid-Holland;VWO;47;46;6,98
-19MR;02;Stedelijk College (Utrecht);Utrecht;Utrecht;VMBO-GT;17;16;6,58
-28UF;03;Het Nieuwe Gymnasium (Eindhoven);Eindhoven;Noord-Brabant;VMBO-GT;99;92;6,68
-28UF;03;Het Nieuwe Gymnasium (Eindhoven);Eindhoven;Noord-Brabant;HAVO;103;95;6,86
-28UF;03;Het Nieuwe Gymnasium (Eindhoven);Eindhoven;Noord-Brabant;VWO;141;131;6,69
-12JQ;04;Rijnvliet Scholengemeenschap (Groningen);Groningen;Groningen;HAVO;82;80;6,71
-12JQ;04;Rijnvliet Scholengemeenschap (Groningen);Groningen;Groningen;VWO;93;87;7,04
-16LA;01;De Meander Mavo/Havo/Vwo (Tilburg);Tilburg;Noord-Brabant;HAVO;91;84;6,63
-23XW;00;Noorderlicht Lyceum (Almere);Almere;Flevoland;VMBO-GT;118;104;6,28
-29UZ;01;Het Vrije College (Nijmegen);Nijmegen;Gelderland;VMBO-GT;80;66;5,90
-29UZ;01;Het Vrije College (Nijmegen);Nijmegen;Gelderland;HAVO;87;71;6,01
-29UZ;01;Het Vrije College (Nijmegen);Nijmegen;Gelderland;VWO;69;56;5,73
-20ZT;03;Parklaan Gymnasium (Enschede);Enschede;Overijssel;HAVO;25;22;6,35
-20ZT;03;Parklaan Gymnasium (Enschede);Enschede;Overijssel;VWO;52;45;6,19
-18DG;04;De Brug Scholengemeenschap (Haarlem);Haarlem;Noord-Holland;VMBO-GT;78;65;6,11
-18DG;04;De Brug Scholengemeenschap (Haarlem);Haarlem;Noord-Holland;HAVO;102;87;6,19
-22LU;03;Lindehof Mavo/Havo/Vwo (Arnhem);Arnhem;Gelderland;VMBO-GT;34;31;6,38
-22LU;03;Lindehof Mavo/Havo/Vwo (Arnhem);Arnhem;Gelderland;VWO;157;142;6,70
-20QP;03;Het Baken Lyceum (Zwolle);Zwolle;Overijssel;VMBO-GT;50;46;6,51
-20QP;03;Het Baken Lyceum (Zwolle);Zwolle;Overijssel;HAVO;140;127;6,52
-20QP;03;Het Baken Lyceum (Zwolle);Zwolle;Overijssel;VWO;84;76;6,43
-27VV;00;Oostvaarders College (Leeuwarden);Leeuwarden;Friesland;VMBO-GT;122;111;6,40
-27VV;00;Oostvaarders College (Leeuwarden);Leeuwarden;Friesland;HAVO;37;34;6,72
-27VV;00;Oostvaarders College (Leeuwarden);Leeuwarden;Friesland;VWO;37;34;6,29
-18IU;03;De Dijk Gymnasium (Maastricht);Maastricht;Limburg;VMBO-GT;86;73;6,21
-18IU;03;De Dijk Gymnasium (Maastricht);Maastricht;Limburg;HAVO;65;56;6,22
-18IU;03;De Dijk Gymnasium (Maastricht);Maastricht;Limburg;VWO;58;49;6,26
-16CV;03;Vondel Scholengemeenschap (Middelburg);Middelburg;Zeeland;VMBO-GT;57;55;6,97
-16CV;03;Vondel Scholengemeenschap (Middelburg);Middelburg;Zeeland;HAVO;112;110;6,96
-16CV;03;Vondel Scholengemeenschap (Middelburg);Middelburg;Zeeland;VWO;62;60;6,85
-18RU;03;Erasmus-fictief Mavo/Havo/Vwo (Assen);Assen;Drenthe;VMBO-GT;113;98;6,27
-18RU;03;Erasmus-fictief Mavo/Havo/Vwo (Assen);Assen;Drenthe;HAVO;161;139;6,23
-18RU;03;Erasmus-fictief Mavo/Havo/Vwo (Assen);Assen;Drenthe;VWO;53;45;6,11
-22QK;00;Het Anker Lyceum (Lelystad);Lelystad;Flevoland;HAVO;109;102;6,90
-20QS;04;De Waal College (Amsterdam);Amsterdam;Noord-Holland;VMBO-GT;102;99;6,87
-20QS;04;De Waal College (Amsterdam);Amsterdam;Noord-Holland;HAVO;52;52;7,19
-20QS;04;De Waal College (Amsterdam);Amsterdam;Noord-Holland;VWO;60;60;7,14
-26TZ;03;Spinoza-fictief Gymnasium (Rotterdam);Rotterdam;Zuid-Holland;HAVO;71;59;6,01
-26TZ;03;Spinoza-fictief Gymnasium (Rotterdam);Rotterdam;Zuid-Holland;VWO;108;90;5,87
-15YL;04;De Vlieger Scholengemeenschap (Den Haag);Den Haag;Zuid-Holland;VWO;40;33;6,12
-17BX;01;Het Kompas Mavo/Havo/Vwo (Utrecht);Utrecht;Utrecht;HAVO;68;62;6,68
-17BX;01;Het Kompas Mavo/Havo/Vwo (Utrecht);Utrecht;Utrecht;VWO;137;122;6,52
-28HS;02;De Horizon Lyceum (Eindhoven);Eindhoven;Noord-Brabant;VMBO-GT;51;45;6,42
-28HS;02;De Horizon Lyceum (Eindhoven);Eindhoven;Noord-Brabant;HAVO;114;101;6,56
-28HS;02;De Horizon Lyceum (Eindhoven);Eindhoven;Noord-Brabant;VWO;85;73;6,42
-14MI;00;Stedelijk College (Groningen);Groningen;Groningen;VMBO-GT;101;91;6,38
-14MI;00;Stedelijk College (Groningen);Groningen;Groningen;HAVO;78;70;6,30
-14MI;00;Stedelijk College (Groningen);Groningen;Groningen;VWO;78;69;6,46
-16NZ;03;Het Nieuwe Gymnasium (Tilburg);Tilburg;Noord-Brabant;VMBO-GT;43;40;6,81
-16NZ;03;Het Nieuwe Gymnasium (Tilburg);Tilburg;Noord-Brabant;HAVO;103;96;6,77
-16NZ;03;Het Nieuwe Gymnasium (Tilburg);Tilburg;Noord-Brabant;VWO;118;111;6,79
-19EE;02;Rijnvliet Scholengemeenschap (Almere);Almere;Flevoland;VMBO-GT;100;93;6,61
-19EE;02;Rijnvliet Scholengemeenschap (Almere);Almere;Flevoland;HAVO;61;55;6,55
-25IB;00;De Meander Mavo/Havo/Vwo (Nijmegen);Nijmegen;Gelderland;HAVO;58;51;6,35
-25IB;00;De Meander Mavo/Havo/Vwo (Nijmegen);Nijmegen;Gelderland;VWO;89;77;6,37
-15MA;01;Noorderlicht Lyceum (Enschede);Enschede;Overijssel;VMBO-GT;86;76;6,63
-15MA;01;Noorderlicht Lyceum (Enschede);Enschede;Overijssel;HAVO;57;52;6,66
-15MA;01;Noorderlicht Lyceum (Enschede);Enschede;Overijssel;VWO;50;45;6,41
-16DA;04;Het Vrije College (Haarlem);Haarlem;Noord-Holland;VWO;125;116;6,88
-15WN;03;Parklaan Gymnasium (Arnhem);Arnhem;Gelderland;VMBO-GT;90;80;6,45
-15WN;03;Parklaan Gymnasium (Arnhem);Arnhem;Gelderland;HAVO;152;135;6,60
-15WN;03;Parklaan Gymnasium (Arnhem);Arnhem;Gelderland;VWO;112;102;6,53
-26CW;00;De Brug Scholengemeenschap (Zwolle);Zwolle;Overijssel;VMBO-GT;45;40;6,37
-26CW;00;De Brug Scholengemeenschap (Zwolle);Zwolle;Overijssel;HAVO;98;84;6,34
-25ND;04;Lindehof Mavo/Havo/Vwo (Leeuwarden);Leeuwarden;Friesland;VMBO-GT;121;109;6,47
-25ND;04;Lindehof Mavo/Havo/Vwo (Leeuwarden);Leeuwarden;Friesland;HAVO;82;73;6,36
-16RZ;04;Het Baken Lyceum (Maastricht);Maastricht;Limburg;VMBO-GT;125;116;6,78
-16RZ;04;Het Baken Lyceum (Maastricht);Maastricht;Limburg;HAVO;102;97;6,81
-16RZ;04;Het Baken Lyceum (Maastricht);Maastricht;Limburg;VWO;85;79;6,65
-10UJ;02;Oostvaarders College (Middelburg);Middelburg;Zeeland;VMBO-GT;75;65;6,25
-10UJ;02;Oostvaarders College (Middelburg);Middelburg;Zeeland;HAVO;73;62;6,36
-10UJ;02;Oostvaarders College (Middelburg);Middelburg;Zeeland;VWO;24;21;6,22
-23TN;03;De Dijk Gymnasium (Assen);Assen;Drenthe;VMBO-GT;63;56;6,35
-23TN;03;De Dijk Gymnasium (Assen);Assen;Drenthe;HAVO;154;140;6,41
-23TN;03;De Dijk Gymnasium (Assen);Assen;Drenthe;VWO;151;135;6,43
-21PK;02;Vondel Scholengemeenschap (Lelystad);Lelystad;Flevoland;VMBO-GT;121;110;6,57
-21PK;02;Vondel Scholengemeenschap (Lelystad);Lelystad;Flevoland;VWO;104;95;6,37
-19TP;04;Erasmus-fictief Mavo/Havo/Vwo (Amsterdam);Amsterdam;Noord-Holland;VMBO-GT;75;69;6,57
-19TP;04;Erasmus-fictief Mavo/Havo/Vwo (Amsterdam);Amsterdam;Noord-Holland;VWO;115;103;6,63
-12HI;03;Het Anker Lyceum (Rotterdam);Rotterdam;Zuid-Holland;VMBO-GT;51;46;6,45
-12HI;03;Het Anker Lyceum (Rotterdam);Rotterdam;Zuid-Holland;VWO;74;66;6,31
-20EC;01;De Waal College (Den Haag);Den Haag;Zuid-Holland;VMBO-GT;59;54;6,81
-20EC;01;De Waal College (Den Haag);Den Haag;Zuid-Holland;HAVO;93;88;6,74
-20EC;01;De Waal College (Den Haag);Den Haag;Zuid-Holland;VWO;162;149;6,74
-22EQ;02;Spinoza-fictief Gymnasium (Utrecht);Utrecht;Utrecht;VMBO-GT;130;116;6,56
-22EQ;02;Spinoza-fictief Gymnasium (Utrecht);Utrecht;Utrecht;HAVO;24;21;6,38
-22EQ;02;Spinoza-fictief Gymnasium (Utrecht);Utrecht;Utrecht;VWO;69;63;6,40
-26LJ;00;De Vlieger Scholengemeenschap (Eindhoven);Eindhoven;Noord-Brabant;VMBO-GT;147;136;6,67
-26LJ;00;De Vlieger Scholengemeenschap (Eindhoven);Eindhoven;Noord-Brabant;HAVO;86;80;6,73
-26LJ;00;De Vlieger Scholengemeenschap (Eindhoven);Eindhoven;Noord-Brabant;VWO;121;113;6,68
-23EV;04;Het Kompas Mavo/Havo/Vwo (Groningen);Groningen;Groningen;VMBO-GT;105;82;5,52
-23EV;04;Het Kompas Mavo/Havo/Vwo (Groningen);Groningen;Groningen;VWO;73;57;5,70
+11UR;02;De Horizon Lyceum (Amsterdam);Amsterdam;Noord-Holland;VMBO-GT;78;68;6,38
+11UR;02;De Horizon Lyceum (Amsterdam);Amsterdam;Noord-Holland;HAVO;117;105;6,39
+11UR;02;De Horizon Lyceum (Amsterdam);Amsterdam;Noord-Holland;VWO;59;52;6,42
+13TS;01;Stedelijk College (Rotterdam);Rotterdam;Zuid-Holland;VMBO-GT;102;95;6,72
+13TS;01;Stedelijk College (Rotterdam);Rotterdam;Zuid-Holland;HAVO;75;69;6,62
+13TS;01;Stedelijk College (Rotterdam);Rotterdam;Zuid-Holland;VWO;129;118;6,66
+28LE;04;Het Nieuwe Gymnasium (Den Haag);Den Haag;Zuid-Holland;VMBO-GT;97;86;6,44
+28LE;04;Het Nieuwe Gymnasium (Den Haag);Den Haag;Zuid-Holland;HAVO;92;82;6,38
+28LE;04;Het Nieuwe Gymnasium (Den Haag);Den Haag;Zuid-Holland;VWO;78;68;6,31
+18RR;02;Rijnvliet Scholengemeenschap (Utrecht);Utrecht;Utrecht;VMBO-GT;117;101;6,25
+18RR;02;Rijnvliet Scholengemeenschap (Utrecht);Utrecht;Utrecht;HAVO;83;71;6,16
+18RD;02;De Meander Mavo/Havo/Vwo (Eindhoven);Eindhoven;Noord-Brabant;VMBO-GT;77;70;6,67
+18RD;02;De Meander Mavo/Havo/Vwo (Eindhoven);Eindhoven;Noord-Brabant;HAVO;73;68;6,71
+18RD;02;De Meander Mavo/Havo/Vwo (Eindhoven);Eindhoven;Noord-Brabant;VWO;113;104;6,70
+29CI;00;Noorderlicht Lyceum (Groningen);Groningen;Groningen;VMBO-GT;77;66;6,29
+29CI;00;Noorderlicht Lyceum (Groningen);Groningen;Groningen;HAVO;56;49;6,18
+29CI;00;Noorderlicht Lyceum (Groningen);Groningen;Groningen;VWO;105;90;6,24
+19SR;02;Het Vrije College (Tilburg);Tilburg;Noord-Brabant;VMBO-GT;97;85;6,40
+15YZ;02;Parklaan Gymnasium (Almere);Almere;Flevoland;VMBO-GT;100;82;5,87
+15YZ;02;Parklaan Gymnasium (Almere);Almere;Flevoland;HAVO;104;81;5,69
+15YZ;02;Parklaan Gymnasium (Almere);Almere;Flevoland;VWO;61;49;5,74
+10XO;00;De Brug Scholengemeenschap (Nijmegen);Nijmegen;Gelderland;VMBO-GT;94;81;6,31
+10XO;00;De Brug Scholengemeenschap (Nijmegen);Nijmegen;Gelderland;HAVO;56;49;6,14
+10XO;00;De Brug Scholengemeenschap (Nijmegen);Nijmegen;Gelderland;VWO;119;104;6,12
+28GZ;04;Lindehof Mavo/Havo/Vwo (Enschede);Enschede;Overijssel;VMBO-GT;145;125;6,26
+28GZ;04;Lindehof Mavo/Havo/Vwo (Enschede);Enschede;Overijssel;HAVO;135;116;6,27
+28GZ;04;Lindehof Mavo/Havo/Vwo (Enschede);Enschede;Overijssel;VWO;105;91;6,40
+10DB;04;Het Baken Lyceum (Haarlem);Haarlem;Noord-Holland;VMBO-GT;112;94;6,02
+10RZ;00;Oostvaarders College (Arnhem);Arnhem;Gelderland;VMBO-GT;122;106;6,11
+10RZ;00;Oostvaarders College (Arnhem);Arnhem;Gelderland;VWO;73;64;6,21
+20HY;04;De Dijk Gymnasium (Zwolle);Zwolle;Overijssel;HAVO;178;150;6,32
+20HY;04;De Dijk Gymnasium (Zwolle);Zwolle;Overijssel;VWO;38;32;6,07
+15UM;01;Vondel Scholengemeenschap (Leeuwarden);Leeuwarden;Friesland;VMBO-GT;28;25;6,03
+15UM;01;Vondel Scholengemeenschap (Leeuwarden);Leeuwarden;Friesland;HAVO;51;45;6,37
+13VI;01;Erasmus-fictief Mavo/Havo/Vwo (Maastricht);Maastricht;Limburg;VMBO-GT;41;36;6,32
+13VI;01;Erasmus-fictief Mavo/Havo/Vwo (Maastricht);Maastricht;Limburg;HAVO;70;62;6,39
+13VI;01;Erasmus-fictief Mavo/Havo/Vwo (Maastricht);Maastricht;Limburg;VWO;102;90;6,35
+19EX;01;Het Anker Lyceum (Middelburg);Middelburg;Zeeland;VMBO-GT;99;94;6,67
+19EX;01;Het Anker Lyceum (Middelburg);Middelburg;Zeeland;VWO;28;26;6,87
+21UQ;03;De Waal College (Assen);Assen;Drenthe;VMBO-GT;15;13;6,46
+21UQ;03;De Waal College (Assen);Assen;Drenthe;HAVO;76;69;6,31
+21UQ;03;De Waal College (Assen);Assen;Drenthe;VWO;36;32;6,57
+14HU;04;Spinoza-fictief Gymnasium (Lelystad);Lelystad;Flevoland;VMBO-GT;105;98;6,86
+14HU;04;Spinoza-fictief Gymnasium (Lelystad);Lelystad;Flevoland;HAVO;65;60;6,88
+14HU;04;Spinoza-fictief Gymnasium (Lelystad);Lelystad;Flevoland;VWO;83;78;6,90
+20YS;00;De Vlieger Scholengemeenschap (Amsterdam);Amsterdam;Noord-Holland;VMBO-GT;54;47;6,36
+20YS;00;De Vlieger Scholengemeenschap (Amsterdam);Amsterdam;Noord-Holland;VWO;67;59;6,47
+24TX;03;Het Kompas Mavo/Havo/Vwo (Rotterdam);Rotterdam;Zuid-Holland;VWO;119;116;6,93
+26TQ;01;De Horizon Lyceum (Den Haag);Den Haag;Zuid-Holland;VMBO-GT;52;47;6,41
+26TQ;01;De Horizon Lyceum (Den Haag);Den Haag;Zuid-Holland;HAVO;61;55;6,44
+26TQ;01;De Horizon Lyceum (Den Haag);Den Haag;Zuid-Holland;VWO;136;122;6,51
+27QD;00;Stedelijk College (Utrecht);Utrecht;Utrecht;VMBO-GT;46;46;7,07
+27QD;00;Stedelijk College (Utrecht);Utrecht;Utrecht;HAVO;108;106;7,26
+27QD;00;Stedelijk College (Utrecht);Utrecht;Utrecht;VWO;91;91;7,18
+22CR;04;Het Nieuwe Gymnasium (Eindhoven);Eindhoven;Noord-Brabant;VMBO-GT;76;70;6,71
+29GH;04;Rijnvliet Scholengemeenschap (Groningen);Groningen;Groningen;VMBO-GT;136;123;6,44
+29GH;04;Rijnvliet Scholengemeenschap (Groningen);Groningen;Groningen;HAVO;60;53;6,39
+29GH;04;Rijnvliet Scholengemeenschap (Groningen);Groningen;Groningen;VWO;77;70;6,53
+11QA;00;De Meander Mavo/Havo/Vwo (Tilburg);Tilburg;Noord-Brabant;VMBO-GT;52;45;6,12
+11QA;00;De Meander Mavo/Havo/Vwo (Tilburg);Tilburg;Noord-Brabant;HAVO;101;88;6,23
+11QA;00;De Meander Mavo/Havo/Vwo (Tilburg);Tilburg;Noord-Brabant;VWO;38;33;6,30
+19NR;02;Noorderlicht Lyceum (Almere);Almere;Flevoland;VMBO-GT;60;58;7,09
+19NR;02;Noorderlicht Lyceum (Almere);Almere;Flevoland;HAVO;60;57;6,89
+19NR;02;Noorderlicht Lyceum (Almere);Almere;Flevoland;VWO;73;73;7,02
+17OP;03;Het Vrije College (Nijmegen);Nijmegen;Gelderland;VMBO-GT;50;45;6,32
+17OP;03;Het Vrije College (Nijmegen);Nijmegen;Gelderland;HAVO;140;123;6,33
+17OP;03;Het Vrije College (Nijmegen);Nijmegen;Gelderland;VWO;84;74;6,24
+27VV;00;Parklaan Gymnasium (Enschede);Enschede;Overijssel;VMBO-GT;78;72;6,55
+27VV;00;Parklaan Gymnasium (Enschede);Enschede;Overijssel;HAVO;121;111;6,67
+27VV;00;Parklaan Gymnasium (Enschede);Enschede;Overijssel;VWO;70;66;6,99
+12ST;01;De Brug Scholengemeenschap (Haarlem);Haarlem;Noord-Holland;VMBO-GT;65;60;6,68
+12ST;01;De Brug Scholengemeenschap (Haarlem);Haarlem;Noord-Holland;HAVO;58;53;6,73
+12ST;01;De Brug Scholengemeenschap (Haarlem);Haarlem;Noord-Holland;VWO;74;68;6,74
+28DH;00;Lindehof Mavo/Havo/Vwo (Arnhem);Arnhem;Gelderland;VMBO-GT;130;119;6,42
+28DH;00;Lindehof Mavo/Havo/Vwo (Arnhem);Arnhem;Gelderland;HAVO;61;56;6,69
+28DH;00;Lindehof Mavo/Havo/Vwo (Arnhem);Arnhem;Gelderland;VWO;84;77;6,68
+28VI;02;Het Baken Lyceum (Zwolle);Zwolle;Overijssel;VMBO-GT;53;48;6,43
+28VI;02;Het Baken Lyceum (Zwolle);Zwolle;Overijssel;HAVO;101;91;6,56
+28VI;02;Het Baken Lyceum (Zwolle);Zwolle;Overijssel;VWO;115;104;6,53
+12PO;00;Oostvaarders College (Leeuwarden);Leeuwarden;Friesland;VMBO-GT;133;113;6,06
+12PO;00;Oostvaarders College (Leeuwarden);Leeuwarden;Friesland;HAVO;49;41;6,05
+22OY;03;De Dijk Gymnasium (Maastricht);Maastricht;Limburg;VMBO-GT;75;75;7,19
+22OY;03;De Dijk Gymnasium (Maastricht);Maastricht;Limburg;HAVO;71;71;7,43
+22OY;03;De Dijk Gymnasium (Maastricht);Maastricht;Limburg;VWO;108;108;7,29
+15YL;04;Vondel Scholengemeenschap (Middelburg);Middelburg;Zeeland;VMBO-GT;40;34;6,25
+15YL;04;Vondel Scholengemeenschap (Middelburg);Middelburg;Zeeland;HAVO;114;97;6,23
+15YL;04;Vondel Scholengemeenschap (Middelburg);Middelburg;Zeeland;VWO;74;64;6,21
+25KS;04;Erasmus-fictief Mavo/Havo/Vwo (Assen);Assen;Drenthe;VMBO-GT;75;75;7,14
+25KS;04;Erasmus-fictief Mavo/Havo/Vwo (Assen);Assen;Drenthe;HAVO;83;83;7,22
+25KS;04;Erasmus-fictief Mavo/Havo/Vwo (Assen);Assen;Drenthe;VWO;37;37;7,41
+20DD;02;Het Anker Lyceum (Lelystad);Lelystad;Flevoland;HAVO;51;47;6,75
+20DD;02;Het Anker Lyceum (Lelystad);Lelystad;Flevoland;VWO;96;89;6,81
+20OZ;01;De Waal College (Amsterdam);Amsterdam;Noord-Holland;VMBO-GT;15;14;6,70
+20OZ;01;De Waal College (Amsterdam);Amsterdam;Noord-Holland;HAVO;43;40;6,71
+20OZ;01;De Waal College (Amsterdam);Amsterdam;Noord-Holland;VWO;103;95;6,67
+27MY;04;Spinoza-fictief Gymnasium (Rotterdam);Rotterdam;Zuid-Holland;HAVO;75;69;6,65
+15BB;01;De Vlieger Scholengemeenschap (Den Haag);Den Haag;Zuid-Holland;VWO;126;114;6,50
+14KD;00;Het Kompas Mavo/Havo/Vwo (Utrecht);Utrecht;Utrecht;VMBO-GT;35;32;6,62
+14KD;00;Het Kompas Mavo/Havo/Vwo (Utrecht);Utrecht;Utrecht;HAVO;86;76;6,67
+14KD;00;Het Kompas Mavo/Havo/Vwo (Utrecht);Utrecht;Utrecht;VWO;57;52;6,70
+19LW;03;De Horizon Lyceum (Eindhoven);Eindhoven;Noord-Brabant;HAVO;118;105;6,46
+19LW;03;De Horizon Lyceum (Eindhoven);Eindhoven;Noord-Brabant;VWO;131;118;6,52
+20QL;00;Stedelijk College (Groningen);Groningen;Groningen;VMBO-GT;161;142;6,47
+20QL;00;Stedelijk College (Groningen);Groningen;Groningen;HAVO;119;104;6,36
+20QL;00;Stedelijk College (Groningen);Groningen;Groningen;VWO;112;98;6,37
+17AS;00;Het Nieuwe Gymnasium (Tilburg);Tilburg;Noord-Brabant;VMBO-GT;137;126;6,62
+17AS;00;Het Nieuwe Gymnasium (Tilburg);Tilburg;Noord-Brabant;HAVO;103;93;6,63
+21PK;00;Rijnvliet Scholengemeenschap (Almere);Almere;Flevoland;VMBO-GT;63;55;6,11
+21PK;00;Rijnvliet Scholengemeenschap (Almere);Almere;Flevoland;HAVO;27;24;6,23
+21PK;00;Rijnvliet Scholengemeenschap (Almere);Almere;Flevoland;VWO;125;107;6,24
+25RN;03;De Meander Mavo/Havo/Vwo (Nijmegen);Nijmegen;Gelderland;VMBO-GT;82;76;6,63
+25RN;03;De Meander Mavo/Havo/Vwo (Nijmegen);Nijmegen;Gelderland;HAVO;68;63;6,72
+25RN;03;De Meander Mavo/Havo/Vwo (Nijmegen);Nijmegen;Gelderland;VWO;99;91;6,57
+16MW;03;Noorderlicht Lyceum (Enschede);Enschede;Overijssel;VMBO-GT;103;97;7,03
+16MW;03;Noorderlicht Lyceum (Enschede);Enschede;Overijssel;HAVO;63;60;6,79
+16MW;03;Noorderlicht Lyceum (Enschede);Enschede;Overijssel;VWO;154;149;6,84
+28XQ;01;Het Vrije College (Haarlem);Haarlem;Noord-Holland;VMBO-GT;77;70;6,40
+28XQ;01;Het Vrije College (Haarlem);Haarlem;Noord-Holland;HAVO;99;89;6,45
+28XQ;01;Het Vrije College (Haarlem);Haarlem;Noord-Holland;VWO;22;19;6,52
+21WI;01;Parklaan Gymnasium (Arnhem);Arnhem;Gelderland;VMBO-GT;99;89;6,37
+21WI;01;Parklaan Gymnasium (Arnhem);Arnhem;Gelderland;HAVO;23;21;6,28
+21WI;01;Parklaan Gymnasium (Arnhem);Arnhem;Gelderland;VWO;86;77;6,47
+17YP;00;De Brug Scholengemeenschap (Zwolle);Zwolle;Overijssel;VMBO-GT;60;49;5,82
+17YP;00;De Brug Scholengemeenschap (Zwolle);Zwolle;Overijssel;HAVO;79;64;5,98
+17YP;00;De Brug Scholengemeenschap (Zwolle);Zwolle;Overijssel;VWO;106;87;5,72
+10FP;04;Lindehof Mavo/Havo/Vwo (Leeuwarden);Leeuwarden;Friesland;VMBO-GT;63;61;7,06
+10FP;04;Lindehof Mavo/Havo/Vwo (Leeuwarden);Leeuwarden;Friesland;HAVO;124;122;7,13
+10FP;04;Lindehof Mavo/Havo/Vwo (Leeuwarden);Leeuwarden;Friesland;VWO;137;132;6,83
+10UI;02;Het Baken Lyceum (Maastricht);Maastricht;Limburg;VWO;130;123;6,99
+13GW;00;Oostvaarders College (Middelburg);Middelburg;Zeeland;VMBO-GT;100;95;6,78
+13GW;00;Oostvaarders College (Middelburg);Middelburg;Zeeland;HAVO;103;95;6,45
+13GW;00;Oostvaarders College (Middelburg);Middelburg;Zeeland;VWO;106;99;6,70
+23QB;03;De Dijk Gymnasium (Assen);Assen;Drenthe;VMBO-GT;88;77;6,21
+23QB;03;De Dijk Gymnasium (Assen);Assen;Drenthe;VWO;91;80;6,32
+22IK;03;Vondel Scholengemeenschap (Lelystad);Lelystad;Flevoland;VMBO-GT;36;35;6,94
+22IK;03;Vondel Scholengemeenschap (Lelystad);Lelystad;Flevoland;HAVO;112;107;6,77
+22IK;03;Vondel Scholengemeenschap (Lelystad);Lelystad;Flevoland;VWO;111;105;6,88
+24JT;03;Erasmus-fictief Mavo/Havo/Vwo (Amsterdam);Amsterdam;Noord-Holland;VMBO-GT;118;105;6,49
+24JT;03;Erasmus-fictief Mavo/Havo/Vwo (Amsterdam);Amsterdam;Noord-Holland;HAVO;112;101;6,50
+24JT;03;Erasmus-fictief Mavo/Havo/Vwo (Amsterdam);Amsterdam;Noord-Holland;VWO;76;69;6,57
+13UY;04;Het Anker Lyceum (Rotterdam);Rotterdam;Zuid-Holland;HAVO;101;87;6,18
+13UY;04;Het Anker Lyceum (Rotterdam);Rotterdam;Zuid-Holland;VWO;16;13;6,11
+11IS;04;De Waal College (Den Haag);Den Haag;Zuid-Holland;VMBO-GT;124;110;6,30
+11IS;04;De Waal College (Den Haag);Den Haag;Zuid-Holland;HAVO;56;50;6,45
+11IS;04;De Waal College (Den Haag);Den Haag;Zuid-Holland;VWO;63;55;6,27
+28ZA;03;Spinoza-fictief Gymnasium (Utrecht);Utrecht;Utrecht;VMBO-GT;95;79;6,00
+28ZA;03;Spinoza-fictief Gymnasium (Utrecht);Utrecht;Utrecht;HAVO;84;69;6,10
+28ZA;03;Spinoza-fictief Gymnasium (Utrecht);Utrecht;Utrecht;VWO;67;55;5,95
+14DS;03;De Vlieger Scholengemeenschap (Eindhoven);Eindhoven;Noord-Brabant;VMBO-GT;136;113;6,31
+14DS;03;De Vlieger Scholengemeenschap (Eindhoven);Eindhoven;Noord-Brabant;HAVO;98;82;6,01
+14DS;03;De Vlieger Scholengemeenschap (Eindhoven);Eindhoven;Noord-Brabant;VWO;93;77;5,99
+13LN;02;Het Kompas Mavo/Havo/Vwo (Groningen);Groningen;Groningen;VMBO-GT;87;77;6,49
+13LN;02;Het Kompas Mavo/Havo/Vwo (Groningen);Groningen;Groningen;HAVO;133;117;6,44

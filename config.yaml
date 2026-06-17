@@ -31,12 +31,19 @@ indicatoren:
     label: "Bovenbouwsucces"
 
 # Eerlijke vergelijking: corrigeer de samengestelde score voor de
-# leerlingpopulatie (sociaaleconomische status van de buurt). Wat overblijft na
-# correctie is de "toegevoegde waarde" van de school: presteert de school beter
-# of slechter dan je op grond van de instroom zou verwachten?
+# leerlingpopulatie. Wat overblijft na correctie is de "toegevoegde waarde" van
+# de school: presteert de school beter of slechter dan je op grond van de
+# instroom zou verwachten?
+#
+# Meerdere context-variabelen -> meervoudige (multivariate) regressie. Dat
+# verklaart de instroom beter dan één enkele SES-score. Eén variabele opgeven kan
+# ook met `context_variabele: ses_score`.
 ses_correctie:
   actief: true
-  context_variabele: ses_score   # hogere score = meer kansrijke populatie
+  context_variabelen:
+    - ses_score          # buurt-SES (hoger = kansrijker)
+    - opleiding_ouders   # % ouders met hoger onderwijs
+    - pct_achterstand    # % leerlingen met onderwijsachterstand
 
 # Minimaal aantal examenkandidaten om mee te tellen (ruis van piepkleine
 # vestigingen eruit filteren).

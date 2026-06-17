@@ -10,14 +10,14 @@ from beste_school.indicators import aggregeer_examen
 from beste_school.score import bereken_scores, maak_ranglijst, z_score
 
 
-def _config(ses: bool = False) -> Config:
+def _config(ses: bool = False, context: list[str] | None = None) -> Config:
     return Config(
         indicatoren=[
             Indicator("gem_ce_cijfer", 1.0, "hoog", "CE"),
             Indicator("slaagpercentage", 1.0, "hoog", "Slaag"),
         ],
         ses_correctie_actief=ses,
-        ses_context_variabele="ses_score",
+        ses_context_variabelen=context or ["ses_score"],
     )
 
 
@@ -64,7 +64,7 @@ def test_richting_laag_keert_om():
     config = Config(
         indicatoren=[Indicator("gem_ce_cijfer", 1.0, "laag", "CE")],
         ses_correctie_actief=False,
-        ses_context_variabele="ses_score",
+        ses_context_variabelen=["ses_score"],
     )
     out = bereken_scores(df, config)
     # Bij richting 'laag' krijgt de laagste waarde de hoogste score.
@@ -91,6 +91,65 @@ def test_ses_correctie_verschuift_ranglijst():
     # Zelfde ruwe score, maar 'Kansarm' presteert boven verwachting.
     assert kansarm["toegevoegde_waarde"] > kansrijk["toegevoegde_waarde"]
     assert kansarm["score_gecorrigeerd"] > kansrijk["score_gecorrigeerd"]
+
+
+def test_multivariate_ses_correctie():
+    # Twee onafhankelijke context-variabelen. Voor de ankerscholen is de prestatie
+    # exact een lineaire functie van (ses + opleiding), zodat hun toegevoegde
+    # waarde ~0 is. Eén afwijker presteert op topniveau maar heeft de zwakste
+    # instroom -> die hoort als enige een duidelijk positieve toegevoegde waarde
+    # te krijgen, en wel de hoogste van het veld.
+    ankers = [(80, 20), (80, 40), (100, 20), (100, 40),
+              (120, 20), (120, 40), (90, 30), (110, 30)]
+    namen, ce, slaag, ses, opl = [], [], [], [], []
+    for i, (s, o) in enumerate(ankers):
+        f = s + o
+        namen.append(f"anker_{i}")
+        ce.append(6.0 + 0.005 * f)
+        slaag.append(80.0 + 0.05 * f)
+        ses.append(float(s))
+        opl.append(float(o))
+    # Afwijker: prestatie als f=160 (top), maar instroom ses=80, opl=20 (f=100).
+    namen.append("Afwijker")
+    ce.append(6.0 + 0.005 * 160)
+    slaag.append(80.0 + 0.05 * 160)
+    ses.append(80.0)
+    opl.append(20.0)
+
+    df = pd.DataFrame(
+        {
+            "instellingsnaam": namen,
+            "gem_ce_cijfer": ce,
+            "slaagpercentage": slaag,
+            "ses_score": ses,
+            "opleiding_ouders": opl,
+        }
+    )
+    out = bereken_scores(df, _config(ses=True, context=["ses_score", "opleiding_ouders"]))
+    afwijker = out[out["instellingsnaam"] == "Afwijker"].iloc[0]
+    assert afwijker["toegevoegde_waarde"] == out["toegevoegde_waarde"].max()
+    assert afwijker["toegevoegde_waarde"] > 0.5
+
+
+def test_groeps_normalisatie_per_onderwijstype():
+    # Z-scores moeten binnen het onderwijstype berekend worden: een 7,0 op vmbo
+    # hoort niet vergeleken te worden met een 7,0 op vwo.
+    df = pd.DataFrame(
+        {
+            "onderwijstype": ["VMBO", "VMBO", "VWO", "VWO"],
+            "gem_ce_cijfer": [6.0, 7.0, 6.0, 7.0],
+            "slaagpercentage": [80.0, 90.0, 80.0, 90.0],
+        }
+    )
+    out = bereken_scores(df, _config(ses=False), groep_kolom="onderwijstype")
+    # Binnen elk type is de hoogste een 7,0 -> z-score +1, ongeacht het type.
+    vmbo = out[out["onderwijstype"] == "VMBO"]
+    vwo = out[out["onderwijstype"] == "VWO"]
+    assert abs(vmbo["z_gem_ce_cijfer"].max() - 1.0) < 1e-9
+    assert abs(vwo["z_gem_ce_cijfer"].max() - 1.0) < 1e-9
+    # De beste van elk type krijgt binnen zijn groep de topscore.
+    assert vmbo["score"].max() == 100.0
+    assert vwo["score"].max() == 100.0
 
 
 def test_maak_ranglijst_sorteert_aflopend():

@@ -24,8 +24,9 @@ binnenkomt.
 
 ```bash
 pip install -r requirements.txt
-python scripts/generate_sample_data.py   # maakt data/raw/*.csv (sample)
-python -m beste_school --top 15          # draait de pijplijn, print de ranglijst
+python scripts/generate_sample_data.py     # maakt data/raw/*.csv (sample)
+python -m beste_school --top 15            # ranglijst over alle scholen
+python -m beste_school --per-onderwijstype # aparte ranglijst per vmbo-t/havo/vwo
 ```
 
 Uitvoer: een ruwe top-N, een top-N **gecorrigeerd voor SES** (toegevoegde
@@ -52,11 +53,23 @@ data/raw/*.csv ──► ingest ──► indicators ──► score-engine ─�
    per vestiging (kandidaat-gewogen CE-cijfer, slaagpercentage) en koppelt
    doorstroom- en contextdata erbij. Eén rij per school.
 3. **Score-engine** (`beste_school/score.py`):
-   - **Normaliseren** — elke indicator naar een z-score binnen de populatie.
+   - **Normaliseren** — elke indicator naar een z-score binnen de *peer-groep*.
+     Met `--per-onderwijstype` gebeurt dat per niveau: vwo'ers worden met vwo'ers
+     vergeleken en vmbo'ers met vmbo'ers, want een 7,0 betekent niet hetzelfde op
+     vmbo-t als op vwo.
    - **Wegen** — gewogen som van z-scores → samengestelde score, herschaald 0–100.
-   - **SES-correctie** — lineaire regressie van de score op een buurt-SES-variabele;
+   - **SES-correctie** — *meervoudige* lineaire regressie van de score op meerdere
+     achtergrondkenmerken (buurt-SES, opleidingsniveau ouders, % achterstand);
      het **residu** is de *toegevoegde waarde* (presteert de school boven of onder
      verwachting?). Dit is wat onderwijsonderzoek "value added" noemt.
+
+### Twee manieren om te rangschikken
+
+- **Geaggregeerd** (standaard) — alle onderwijstypen van een vestiging samen, één
+  ranglijst over heel VO.
+- **Per onderwijstype** (`--per-onderwijstype`) — aparte ranglijsten voor vmbo-t,
+  havo en vwo, met z-scores berekend bínnen elk niveau. Dit is de eerlijkste
+  vergelijking, omdat scholen alleen tegen vergelijkbare scholen worden afgezet.
 
 ### Indicatoren (configureerbaar in `config.yaml`)
 
@@ -94,9 +107,9 @@ kolomnamen, dus echte exports passen er zo in.
   gewichten. Lever 'm nooit zonder die gewichten te tonen.
 - **Data meet niet alles.** Sfeer, veiligheid, onderwijsvisie en leraarkwaliteit
   zitten niet (of indirect) in de cijfers.
-- **SES-correctie is een model, geen waarheid.** Een lineaire correctie op één
-  context-variabele is een vereenvoudiging; rijkere modellen gebruiken meerdere
-  achtergrondkenmerken.
+- **SES-correctie is een model, geen waarheid.** De pijplijn corrigeert
+  meervoudig (meerdere achtergrondkenmerken), maar blijft een lineair model;
+  de werkelijkheid is rijker en niet-lineair.
 - **Kleine vestigingen zijn ruisgevoelig.** Vandaar de drempel op
   examenkandidaten (`drempel_kandidaten` in de config).
 

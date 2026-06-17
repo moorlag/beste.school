@@ -16,7 +16,6 @@ from .ingest import SLEUTEL
 # Kolommen die we als getal verwachten in de examenbron.
 _NUMERIEK_EXAMEN = ["examenkandidaten", "geslaagden", "gem_ce_cijfer"]
 _NUMERIEK_DOORSTROOM = ["onderbouwsnelheid", "bovenbouwsucces"]
-_NUMERIEK_CONTEXT = ["ses_score"]
 
 
 def _naar_getal(df: pd.DataFrame, kolommen: list[str]) -> pd.DataFrame:
@@ -31,14 +30,21 @@ def _naar_getal(df: pd.DataFrame, kolommen: list[str]) -> pd.DataFrame:
     return df
 
 
-def aggregeer_examen(examen: pd.DataFrame) -> pd.DataFrame:
-    """Aggregeer examenresultaten naar één rij per vestiging.
+def aggregeer_examen(
+    examen: pd.DataFrame, extra_groep: list[str] | None = None
+) -> pd.DataFrame:
+    """Aggregeer examenresultaten tot één rij per vestiging.
 
-    Een vestiging heeft meestal meerdere onderwijstypen (vmbo-t, havo, vwo).
-    We tellen kandidaten en geslaagden op en berekenen het gemiddelde CE-cijfer
-    gewogen naar het aantal kandidaten.
+    Een vestiging heeft meestal meerdere onderwijstypen (vmbo-t, havo, vwo) en
+    DUO kan binnen een type nog uitsplitsen (bijv. naar geslacht). We tellen
+    kandidaten en geslaagden op en berekenen het CE-cijfer gewogen naar het
+    aantal kandidaten.
+
+    Met `extra_groep=["onderwijstype"]` blijft de uitsplitsing per onderwijstype
+    behouden -- dan krijg je één rij per vestiging *en* onderwijstype.
     """
     examen = _naar_getal(examen, _NUMERIEK_EXAMEN)
+    groep_kolommen = SLEUTEL + (extra_groep or [])
 
     # Identificerende, niet-numerieke velden die we willen bewaren.
     meta_kolommen = [
@@ -49,7 +55,7 @@ def aggregeer_examen(examen: pd.DataFrame) -> pd.DataFrame:
 
     examen["_ce_x_kandidaten"] = examen["gem_ce_cijfer"] * examen["examenkandidaten"]
 
-    groep = examen.groupby(SLEUTEL, as_index=False).agg(
+    groep = examen.groupby(groep_kolommen, as_index=False).agg(
         examenkandidaten=("examenkandidaten", "sum"),
         geslaagden=("geslaagden", "sum"),
         _ce_x_kandidaten=("_ce_x_kandidaten", "sum"),
@@ -59,23 +65,37 @@ def aggregeer_examen(examen: pd.DataFrame) -> pd.DataFrame:
     groep = groep.drop(columns="_ce_x_kandidaten")
 
     if meta_kolommen:
-        meta = examen.groupby(SLEUTEL, as_index=False)[meta_kolommen].first()
-        groep = groep.merge(meta, on=SLEUTEL, how="left")
+        meta = examen.groupby(groep_kolommen, as_index=False)[meta_kolommen].first()
+        groep = groep.merge(meta, on=groep_kolommen, how="left")
 
     return groep
 
 
-def bouw_indicatortabel(bronnen: dict[str, pd.DataFrame]) -> pd.DataFrame:
-    """Combineer alle bronnen tot één indicatortabel per school."""
-    df = aggregeer_examen(bronnen["examen"])
+def _context_numeriek(context: pd.DataFrame) -> pd.DataFrame:
+    """Maak alle niet-sleutel-kolommen in de contextbron numeriek."""
+    kolommen = [k for k in context.columns if k not in SLEUTEL]
+    return _naar_getal(context, kolommen)
+
+
+def bouw_indicatortabel(
+    bronnen: dict[str, pd.DataFrame], per_onderwijstype: bool = False
+) -> pd.DataFrame:
+    """Combineer alle bronnen tot één indicatortabel.
+
+    Met `per_onderwijstype=True` krijg je één rij per vestiging én onderwijstype,
+    zodat je binnen vergelijkbare niveaus kunt rangschikken. Doorstroom- en
+    contextdata zitten op vestigingsniveau en worden op elke type-rij gekoppeld.
+    """
+    extra_groep = ["onderwijstype"] if per_onderwijstype else None
+    df = aggregeer_examen(bronnen["examen"], extra_groep=extra_groep)
 
     doorstroom = _naar_getal(bronnen["doorstroom"], _NUMERIEK_DOORSTROOM)
-    context = _naar_getal(bronnen["context"], _NUMERIEK_CONTEXT)
+    context = _context_numeriek(bronnen["context"])
 
     df = df.merge(
         doorstroom[SLEUTEL + _NUMERIEK_DOORSTROOM], on=SLEUTEL, how="left"
     )
-    df = df.merge(context[SLEUTEL + _NUMERIEK_CONTEXT], on=SLEUTEL, how="left")
+    df = df.merge(context, on=SLEUTEL, how="left")
 
     return df
 

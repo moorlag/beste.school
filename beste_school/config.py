@@ -29,7 +29,7 @@ class Indicator:
 class Config:
     indicatoren: list[Indicator]
     ses_correctie_actief: bool
-    ses_context_variabele: str
+    ses_context_variabelen: list[str]
     drempel_kandidaten: int = 0
     extra: dict = field(default_factory=dict)
 
@@ -58,9 +58,16 @@ def laad_config(pad: str | Path) -> Config:
     ]
 
     ses = ruw.get("ses_correctie", {})
+    # Ondersteun zowel één variabele (context_variabele) als meerdere
+    # (context_variabelen). Meerdere -> multivariate regressie.
+    if "context_variabelen" in ses:
+        context_variabelen = list(ses["context_variabelen"])
+    else:
+        context_variabelen = [ses.get("context_variabele", "ses_score")]
+
     return Config(
         indicatoren=indicatoren,
         ses_correctie_actief=bool(ses.get("actief", False)),
-        ses_context_variabele=ses.get("context_variabele", "ses_score"),
+        ses_context_variabelen=context_variabelen,
         drempel_kandidaten=int(ruw.get("drempel_kandidaten", 0)),
     )

@@ -68,15 +68,30 @@ def genereer() -> dict[str, pd.DataFrame]:
         # Maak namen uniek.
         naam = f"{naam} ({gemeente})"
 
+        # Context van de leerlingpopulatie (meerdere achtergrondkenmerken).
         # Buurt-SES: hogere score = kansrijker. Schaal ~ [80, 120], gem 100.
         ses_score = float(np.clip(RNG.normal(100, 10), 75, 125))
+        # Opleidingsniveau ouders: % met hoger onderwijs, correleert met SES.
+        opleiding_ouders = float(
+            np.clip(40 + 0.8 * (ses_score - 100) + RNG.normal(0, 6), 10, 90)
+        )
+        # Onderwijsachterstand: % leerlingen met achterstandsindicatie (omgekeerd).
+        pct_achterstand = float(
+            np.clip(20 - 0.6 * (ses_score - 100) + RNG.normal(0, 4), 0, 60)
+        )
 
-        # Verborgen "echte" toegevoegde waarde van de school (los van SES).
+        # Verborgen "echte" toegevoegde waarde van de school (los van context).
         school_effect = RNG.normal(0, 1.0)
 
-        # Onderliggende kwaliteit = SES-component + toegevoegde waarde + ruis.
-        ses_component = (ses_score - 100) / 10.0  # ~ standaard-normaal
-        kwaliteit = 0.6 * ses_component + school_effect
+        # Onderliggende kwaliteit = contextcomponent + toegevoegde waarde + ruis.
+        # De contextcomponent hangt van meerdere kenmerken af -> een meervoudige
+        # correctie verklaart de instroom beter dan één variabele alleen.
+        context_component = (
+            0.4 * (ses_score - 100) / 10.0
+            + 0.3 * (opleiding_ouders - 40) / 15.0
+            - 0.3 * (pct_achterstand - 20) / 10.0
+        )
+        kwaliteit = context_component + school_effect
 
         # --- Examenresultaten per onderwijstype ---
         for ot in ONDERWIJSTYPEN:
@@ -121,6 +136,8 @@ def genereer() -> dict[str, pd.DataFrame]:
                 "BRIN_NUMMER": brin,
                 "VESTIGINGSNUMMER": vestiging,
                 "SES_SCORE": f"{ses_score:.1f}".replace(".", ","),
+                "OPLEIDING_OUDERS": f"{opleiding_ouders:.1f}".replace(".", ","),
+                "PCT_ACHTERSTAND": f"{pct_achterstand:.1f}".replace(".", ","),
             }
         )
 

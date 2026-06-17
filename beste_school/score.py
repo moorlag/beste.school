@@ -2,13 +2,17 @@
 
 Methode
 -------
-1. Normaliseer elke indicator naar een z-score (gemiddelde 0, standaarddeviatie 1)
-   binnen de populatie scholen. Indicatoren met richting "laag" worden omgekeerd,
-   zodat een hogere z-score altijd "beter" betekent.
-2. Tel de z-scores gewogen op tot een samengestelde score, en herschaal naar 0-100.
-3. (Optioneel) Corrigeer voor de leerlingpopulatie via een lineaire regressie van
-   de samengestelde score op een SES-context-variabele. Het residu is de
-   "toegevoegde waarde": presteert de school beter dan verwacht gegeven de instroom?
+1. Normaliseer elke indicator naar een z-score (gemiddelde 0, standaarddeviatie 1).
+   Indicatoren met richting "laag" worden omgekeerd, zodat een hogere z-score
+   altijd "beter" betekent. De normalisatie gebeurt binnen een *peer-groep*: als
+   je per onderwijstype rangschikt, worden vwo'ers met vwo'ers vergeleken en
+   vmbo'ers met vmbo'ers -- een 7,0 betekent immers niet hetzelfde op vmbo-t als
+   op vwo.
+2. Tel de z-scores gewogen op tot een samengestelde score, herschaald naar 0-100.
+3. (Optioneel) Corrigeer voor de leerlingpopulatie via een *meervoudige* lineaire
+   regressie van de samengestelde score op meerdere SES-context-variabelen. Het
+   residu is de "toegevoegde waarde": presteert de school beter dan verwacht
+   gegeven de instroom?
 
 Alle stappen draaien identiek op echte DUO-data en op de sample.
 """
@@ -35,12 +39,29 @@ def _herschaal_0_100(reeks: pd.Series) -> pd.Series:
     return 100 * (reeks - laag) / (hoog - laag)
 
 
-def bereken_scores(df: pd.DataFrame, config: Config) -> pd.DataFrame:
-    """Voeg z-scores, een samengestelde score en (optioneel) toegevoegde waarde toe."""
+def bereken_scores(
+    df: pd.DataFrame, config: Config, groep_kolom: str | None = None
+) -> pd.DataFrame:
+    """Bereken scores, eventueel binnen peer-groepen (bijv. per onderwijstype).
+
+    Met `groep_kolom` worden z-scores, weging en SES-correctie per groep berekend,
+    zodat alleen vergelijkbare scholen tegen elkaar worden afgezet.
+    """
+    if groep_kolom is None or groep_kolom not in df.columns:
+        return _scoor_groep(df, config)
+
+    delen = [
+        _scoor_groep(deel, config)
+        for _, deel in df.groupby(groep_kolom, sort=False)
+    ]
+    return pd.concat(delen).sort_index()
+
+
+def _scoor_groep(df: pd.DataFrame, config: Config) -> pd.DataFrame:
+    """Bereken scores binnen één (peer-)groep."""
     df = df.copy()
     gewichten = config.genormaliseerde_gewichten
 
-    # 1. Z-scores per indicator (richting-gecorrigeerd).
     samengesteld = pd.Series(0.0, index=df.index)
     for ind in config.indicatoren:
         if ind.naam not in df.columns:
@@ -57,39 +78,54 @@ def bereken_scores(df: pd.DataFrame, config: Config) -> pd.DataFrame:
     df["samengestelde_z"] = samengesteld
     df["score"] = _herschaal_0_100(samengesteld)
 
-    # 3. Eerlijke correctie voor de leerlingpopulatie.
     if config.ses_correctie_actief:
-        df = _ses_correctie(df, config.ses_context_variabele)
+        df = _ses_correctie(df, config.ses_context_variabelen)
 
     return df
 
 
-def _ses_correctie(df: pd.DataFrame, context_variabele: str) -> pd.DataFrame:
-    """Regresseer de samengestelde score op SES; het residu = toegevoegde waarde."""
+def _ses_correctie(df: pd.DataFrame, context_variabelen: list[str]) -> pd.DataFrame:
+    """Meervoudige regressie van de score op SES; het residu = toegevoegde waarde.
+
+    Lost kleinste-kwadraten op: samengestelde_z ~ b0 + b1*x1 + ... + bk*xk.
+    Het residu (waargenomen - verwacht) is de toegevoegde waarde van de school.
+    """
     df = df.copy()
-    if context_variabele not in df.columns:
+    aanwezig = [v for v in context_variabelen if v in df.columns]
+    if not aanwezig:
         raise KeyError(
-            f"SES-correctie aan, maar context-variabele '{context_variabele}' ontbreekt."
+            "SES-correctie aan, maar geen van de context-variabelen "
+            f"{context_variabelen} staat in de data."
         )
 
-    geldig = df[context_variabele].notna() & df["samengestelde_z"].notna()
-    x = df.loc[geldig, context_variabele].astype(float).to_numpy()
-    y = df.loc[geldig, "samengestelde_z"].astype(float).to_numpy()
+    geldig = df["samengestelde_z"].notna()
+    for v in aanwezig:
+        geldig &= df[v].notna()
 
-    if len(x) < 3 or np.std(x) == 0:
-        # Te weinig spreiding om te corrigeren; val terug op ruwe score.
-        df["toegevoegde_waarde"] = np.nan
+    X_vol = df[aanwezig].astype(float)
+    n_geldig = int(geldig.sum())
+
+    # Te weinig waarnemingen of geen spreiding -> val terug op de ruwe score.
+    genoeg = n_geldig >= len(aanwezig) + 2
+    spreiding = all(X_vol.loc[geldig, v].std(ddof=0) > 0 for v in aanwezig)
+    if not (genoeg and spreiding):
         df["verwachte_z"] = np.nan
+        df["toegevoegde_waarde"] = np.nan
         df["score_gecorrigeerd"] = df["score"]
         return df
 
-    helling, snijpunt = np.polyfit(x, y, 1)
-    verwacht = helling * df[context_variabele].astype(float) + snijpunt
-    residu = df["samengestelde_z"] - verwacht
+    # Ontwerpmatrix met interceptkolom.
+    A = np.column_stack([np.ones(n_geldig), X_vol.loc[geldig].to_numpy()])
+    y = df.loc[geldig, "samengestelde_z"].to_numpy()
+    coef, *_ = np.linalg.lstsq(A, y, rcond=None)
+
+    A_vol = np.column_stack([np.ones(len(df)), X_vol.to_numpy()])
+    verwacht = A_vol @ coef
+    residu = df["samengestelde_z"].to_numpy() - verwacht
 
     df["verwachte_z"] = verwacht
     df["toegevoegde_waarde"] = residu
-    df["score_gecorrigeerd"] = _herschaal_0_100(residu)
+    df["score_gecorrigeerd"] = _herschaal_0_100(pd.Series(residu, index=df.index))
     return df
 
 
