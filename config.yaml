@@ -1,0 +1,43 @@
+# Configuratie voor de score-engine van beste.school
+#
+# Elke indicator krijgt een gewicht. De gewichten worden intern genormaliseerd
+# (ze hoeven niet op te tellen tot 1). Verander deze waarden om te zien hoe de
+# ranglijst verschuift -- dat is precies het punt: "de beste school" is een
+# normatieve keuze, geen objectief feit.
+
+indicatoren:
+  # Gemiddeld cijfer centraal examen (CE). Hoofdindicator in de AD Scholenlijst.
+  gem_ce_cijfer:
+    gewicht: 0.40
+    richting: hoog   # hoog = hoger is beter
+    label: "Gemiddeld CE-cijfer"
+
+  # Slaagpercentage = geslaagden / examenkandidaten.
+  slaagpercentage:
+    gewicht: 0.20
+    richting: hoog
+    label: "Slaagpercentage"
+
+  # Onderbouwsnelheid: % leerlingen dat onvertraagd door de onderbouw komt.
+  onderbouwsnelheid:
+    gewicht: 0.20
+    richting: hoog
+    label: "Onderbouwsnelheid"
+
+  # Bovenbouwsucces: % leerlingen dat onvertraagd het diploma haalt in de bovenbouw.
+  bovenbouwsucces:
+    gewicht: 0.20
+    richting: hoog
+    label: "Bovenbouwsucces"
+
+# Eerlijke vergelijking: corrigeer de samengestelde score voor de
+# leerlingpopulatie (sociaaleconomische status van de buurt). Wat overblijft na
+# correctie is de "toegevoegde waarde" van de school: presteert de school beter
+# of slechter dan je op grond van de instroom zou verwachten?
+ses_correctie:
+  actief: true
+  context_variabele: ses_score   # hogere score = meer kansrijke populatie
+
+# Minimaal aantal examenkandidaten om mee te tellen (ruis van piepkleine
+# vestigingen eruit filteren).
+drempel_kandidaten: 20
